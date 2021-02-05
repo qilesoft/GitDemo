@@ -1,5 +1,6 @@
 package com.yxcskj.gitdemo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -11,12 +12,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private int number = 0;
     private TextView textNum;
-    private Button button_add,button_sub;
+    private Button button_add, button_sub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(savedInstanceState!=null){
+            number = savedInstanceState.getInt("number");
+        }
+
         textNum = findViewById(R.id.textNum);
         textNum.setText(String.valueOf(number));
         button_add = findViewById(R.id.button_add);
@@ -35,5 +41,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textNum.setText(String.valueOf(--number));
                 break;
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("number", number);
     }
 }
