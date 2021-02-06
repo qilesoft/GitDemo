@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * 这个是一个Git Dmeo
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private int number = 0;
